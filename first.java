@@ -27,9 +27,9 @@ class first{
         for(int i=0;i<a.length();i++){
             for(int j=i+1;j<=a.length();j++){
                 //System.out.println(a.substring(i,j));
-                System.out.println(hashSet.contains("")+" "+i+" "+j);
+                //System.out.println(hashSet.contains("")+" "+i+" "+j);
                 hashSet.add(a.substring(i,j));
-                System.out.println(hashSet.contains("")+" "+i);
+                //System.out.println(hashSet.contains("")+" "+i);
             }
    }
     // Iterator<String> b = hashSet.iterator(); 
@@ -39,11 +39,37 @@ class first{
 //    System.out.println(hashSet);
     return hashSet.size();
 }
-    public static void main(String args[]){
+    //4.
+    static int findVowelsInSubstring(String a){
+        int num = 0;
+        char ch;
+        Set<String> set = new HashSet<String>();
+        String str;
+        for(int i=0;i<a.length();i++){
+            for(int j=i+1;j<=a.length();j++){
+                set.add(a.substring(i,j));
+            }
+        }
+        System.out.println(set.size());
+        Iterator<String> b = set.iterator();
+        while(b.hasNext()){
+            str = b.next();
+            for(int i=0;i<str.length();i++){
+               ch=str.charAt(i);
+               if((ch=='a')||(ch=='e')||(ch=='i')||(ch=='o')||(ch=='u')){
+                   num++;
+               }                 
+            }
+        }
+        return num;
+    }    
+public static void main(String args[]){
         Scanner sc=new Scanner(System.in);
         String a = sc.nextLine();
         //System.out.print(countSubstring(a));
         //findSubstrings(a);
-        System.out.println(differentSubstring(a));
+        //System.out.println(differentSubstring(a));
+        System.out.println(findVowelsInSubstring(a));
+        
     }
 }

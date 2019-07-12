@@ -62,7 +62,8 @@ class first{
             }
         }
         return num;
-    } 
+    }
+    //5. 
     static int findNumVowelSub(String a){
         int num = 0;
         char ch;
@@ -83,6 +84,7 @@ class first{
         }
         return num;
     }
+    //6.
     static void sortSubstrings(String a){
         int n=a.length();
         Set<String> tSet=new TreeSet<String>();

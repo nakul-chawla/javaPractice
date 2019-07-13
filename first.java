@@ -5,6 +5,8 @@
 //5.Find no. of vowels in substring in other way(basically couting the number of substring for each alphabet then knowing is this a vowel and
 //multiplying by the number found earlier)
 //6.Sort the substrings(use Tree Set)
+//7.Find all the subsequences
+
 import java.io.*;
 import java.util.*;
 class first{
@@ -95,15 +97,41 @@ class first{
         }
         System.out.println(tSet);
     }
+    //7.
+    static HashSet<String> hs = new HashSet<String>();
 
+    static void findsubsequence(String s){
+        for(int i=0;i<s.length();i++){
+
+            for(int j=s.length();j>i;j--){
+                String sub = s.substring(i,j);
+
+                if(!hs.contains(sub)){
+                    hs.add(sub);
+                }
+
+                for(int k =1;k<sub.length()-1;k++){
+                    StringBuffer sb = new StringBuffer(sub);
+
+                    sb.deleteCharAt(k);
+                    
+                    findsubsequence(sb.toString());
+                }
+
+            }
+        }
+    }
     public static void main(String args[]){
         Scanner sc=new Scanner(System.in);
         String a = sc.nextLine();
-        System.out.print(countSubstring(a));
-        findSubstrings(a);
-        System.out.println(differentSubstring(a));
-        System.out.println(findVowelsInSubstring(a));
-        System.out.println(findNumVowelSub(a));
-        sortSubstrings(a);
+        // System.out.print(countSubstring(a));
+        // findSubstrings(a);
+        // System.out.println(differentSubstring(a));
+        // System.out.println(findVowelsInSubstring(a));
+        // System.out.println(findNumVowelSub(a));
+        // sortSubstrings(a);
+        findsubsequence(a);
+        System.out.println(hs);
+
     }
 }

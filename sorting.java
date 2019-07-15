@@ -2,6 +2,16 @@
 import java.util.Scanner;
 
 class Sorting{
+
+    static void sortMerge(int beg,int end,int[] arr){
+        if(beg>end)
+            return;
+        
+        int mid = (end-beg)/2;
+        sortMerge(beg, mid-1, arr);
+        sortMerge(mid, end, arr);
+    }
+
     static void sortBubble(int arr[]){
         int n=arr.length;
         int swap=0;

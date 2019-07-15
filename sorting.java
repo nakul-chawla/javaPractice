@@ -3,13 +3,50 @@ import java.util.Scanner;
 
 class Sorting{
 
+    static void merge(int beg,int end,int mid,int[] arr){
+        int i= beg;
+        int j = mid+1;
+        int k=0;
+        int[] b = new int[arr.length];
+        
+        while(i<=mid&&j<=end){
+            if(arr[i]<arr[j]){
+                b[k]=arr[i];
+                i++;
+            }else{
+                b[k]=arr[j];
+                j++;
+            }
+            k++;
+        }
+        if(i<=mid){
+            for(int x=i;x<=mid;x++){
+                b[k]=arr[x];
+                k++;
+            }
+        }
+
+        if(j<=end){
+            for(int x=j;x<=end;x++){
+                b[k]=arr[x];
+                k++;
+            }
+        }
+
+        for(int f=beg;f<=end;f++){
+            arr[f]=b[f-beg];
+        }
+    }
     static void sortMerge(int beg,int end,int[] arr){
-        if(beg>end)
+        if(beg>=end)
             return;
         
-        int mid = (end-beg)/2;
-        sortMerge(beg, mid-1, arr);
-        sortMerge(mid, end, arr);
+        int mid = (end+beg)/2;
+        
+        sortMerge(beg, mid, arr);
+        sortMerge(mid+1, end, arr);
+
+        merge(beg,end,mid,arr);
     }
 
     static void sortBubble(int arr[]){
@@ -36,6 +73,10 @@ class Sorting{
         for(int i=0;i<n;i++){
             arr[i]=sc.nextInt();
         }
-        sortBubble(arr);
+        //sortBubble(arr);
+        sortMerge(0, n-1, arr);
+        for(int i=0;i<n;i++){
+            System.out.print(arr[i]+" ");
+        }
     }
 }

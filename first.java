@@ -5,7 +5,8 @@
 //5.Find no. of vowels in substring in other way(basically couting the number of substring for each alphabet then knowing is this a vowel and
 //multiplying by the number found earlier)
 //6.Sort the substrings(use Tree Set)
-//7.Find all the subsequences
+//7.Find all the subsequences with time complexity O(n^3)
+//8.Subsequences with time complexity O(2^n)
 
 import java.io.*;
 import java.util.*;
@@ -18,7 +19,7 @@ class first{
     //2.
     static void findSubstrings(String a){
         for(int i=0;i<a.length();i++){
-            for(int j=i;j<=a.length();j++){
+            for(int j=i+1;j<=a.length();j++){
                 System.out.println(a.substring(i,j));
             }
         }
@@ -121,17 +122,47 @@ class first{
             }
         }
     }
+    //8.
+    static int findAnagrams(String s){
+        HashMap<String,Integer> h = new HashMap<String,Integer>();
+        int n = s.length();
+        int count =0;
+        int y;
+        int z;
+        String a;
+        char[] b;
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<=n;j++){
+                a = s.substring(i,j);
+                b = a.toCharArray();
+                Arrays.sort(b);
+                String x = new String(b);
+                if(h.containsKey(x)){
+                    y=h.get(x);
+                    z=y+1;   
+                    count =count+((z*(z-1))/2)-((y*(y-1))/2);
+                    h.put(x,z);
+                }else{
+                    h.put(x,1);
+                }
+                
+            }
+        }
+        
+    return count;}
+
+    
     public static void main(String args[]){
         Scanner sc=new Scanner(System.in);
         String a = sc.nextLine();
         // System.out.print(countSubstring(a));
         // findSubstrings(a);
-        // System.out.println(differentSubstring(a));
+        //System.out.println(differentSubstring(a));
         // System.out.println(findVowelsInSubstring(a));
         // System.out.println(findNumVowelSub(a));
         // sortSubstrings(a);
-        findsubsequence(a);
-        System.out.println(hs);
-
+        //findsubsequence(a);
+        //System.out.println(hs);
+        System.out.println(findAnagrams(a));
     }
 }

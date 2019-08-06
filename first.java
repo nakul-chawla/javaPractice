@@ -10,6 +10,7 @@
 
 import java.io.*;
 import java.util.*;
+
 class first{
     //1.
     static int countSubstring(String a){
@@ -166,3 +167,12 @@ class first{
         System.out.println(findAnagrams(a));
     }
 }
+//1.Find number of substrings of a string
+//2.Find all the substrings
+//3.Find all the uncommon substrings(We can use set to save them because it doesnt store duplicate value)
+//4.Find the occurence of vowels in substrings
+//5.Find no. of vowels in substring in other way(basically couting the number of substring for each alphabet then knowing is this a vowel and
+//multiplying by the number found earlier)
+//6.Sort the substrings(use Tree Set)
+//7.Find all the subsequences with time complexity O(n^3)
+//8.Subsequences with time complexity O(2^n)

@@ -1,6 +1,8 @@
 import java.io.*;
 import java.util.*;
 
+import org.graalvm.compiler.nodes.NodeView.Default;
+
 class Node{
     int data;
     Node next;
@@ -15,8 +17,8 @@ class Node{
 }
 class linklist{
     Node head=new Node();
-    Node pointer=head;
     public void addNode(Node a){
+        Node pointer = head;
         if(head.next==null){
             head.next=a;
             a.next=null;
@@ -29,6 +31,7 @@ class linklist{
         }
     }
     public void traverse(){
+        Node pointer=head;
         while(pointer.next!=null){
             System.out.println(pointer.data);
             pointer=pointer.next;
@@ -38,12 +41,23 @@ class linklist{
 }
 class Main{
     public static void main(String[] args){
-        System.out.println("Enter the number to be added");
+        System.out.println("Select the operation to be performed 1.add,2.traverse");
         Scanner sc = new Scanner(System.in);
-        int num=sc.nextInt();
-        Node a = new Node(num,null);
+        int i=sc.nextInt();
+        int x;
         linklist ll=new linklist();
-        ll.addNode(a);
-        ll.traverse();
+        switch(i){
+            case 1:{
+                x=sc.nextInt();
+                Node a = new Node(x,null);
+                ll.addNode(a);
+                break;
+            }
+            case 2:
+                ll.traverse();
+            default:{
+                break;
+            }   
+        }
     }
 }

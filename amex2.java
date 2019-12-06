@@ -7,6 +7,7 @@ class amex2{
         int flag;
         String ans="";
         int abc;
+        System.out.println(abc);
         for(int i=0;i<A.length;i++){
             flag=0;
             for(int j=0;j<A[i].length();j++){

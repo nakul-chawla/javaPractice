@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - musigma",
+            "request": "launch",
+            "mainClass": "musigma",
+            "projectName": "java_61767676"
+        }
+    ]
+}

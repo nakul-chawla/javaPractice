@@ -150,7 +150,25 @@ class first{
             }
         }
         
-    return count;}
+    return count;
+}
+static int check(String a){
+    int size =a.length();
+    for(int i=1;i<size;i++){
+        if(a.charAt(i)!=a.charAt(i-1)){
+            System.out.println(a.substring(0, i));
+            System.out.println(a.substring(i+1, size));
+            String ab=a.substring(0, i);
+            String bc=a.substring(i+1, size);
+            if(ab.equals(bc)){
+                System.out.println(a);
+                return 1;
+            }else
+                return 0;
+        }
+    }
+    return 1;
+}
 
     
     public static void main(String args[]){
@@ -164,7 +182,8 @@ class first{
         // sortSubstrings(a);
         //findsubsequence(a);
         //System.out.println(hs);
-        System.out.println(findAnagrams(a));
+        //System.out.println(findAnagrams(a));
+        System.out.println(check(a));
     }
 }
 //1.Find number of substrings of a string
